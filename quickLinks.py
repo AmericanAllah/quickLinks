@@ -89,5 +89,5 @@ class LinkBrowser:
         self.driver.quit()
 
 if __name__ == "__main__":
-    browser = LinkBrowser('fort-export.txt', 'saved_links.txt', 'save_spot.txt')
+    browser = LinkBrowser('links.txt', 'saved_links.txt', 'save_spot.txt')
     browser.navigate_links()
