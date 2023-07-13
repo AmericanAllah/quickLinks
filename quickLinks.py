@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
 import os
+import sys
 
 class LinkBrowser:
     def __init__(self, input_file, output_file, save_spot_file):
@@ -47,6 +48,7 @@ class LinkBrowser:
         with open(self.save_spot_file, 'w') as f:
             f.write(link + '\n')
         print(f"Current spot saved at {link}")
+        sys.exit()
 
     def go_to_next_link(self):
         if self.current_link_index < len(self.links) - 1:
@@ -66,7 +68,7 @@ class LinkBrowser:
         self.driver.get(self.links[self.current_link_index])
 
         while True:
-            print("Press Enter for next link, 'a' to add the current link to list, 'b' to go back, 'q' to quit, 'r' to remove link from list, 's' to save current spot")
+            print("Press Enter for next link, 'a' to add the current link to list, 'b' to go back, 'q' to quit, 'r' to remove link from list, 's' to save current spot and exit")
             command = input()
 
             if command == '':
@@ -87,5 +89,5 @@ class LinkBrowser:
         self.driver.quit()
 
 if __name__ == "__main__":
-    browser = LinkBrowser('links.txt', 'saved_links.txt', 'save_spot.txt')
+    browser = LinkBrowser('fort-export.txt', 'saved_links.txt', 'save_spot.txt')
     browser.navigate_links()
